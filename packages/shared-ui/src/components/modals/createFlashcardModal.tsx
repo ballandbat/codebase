@@ -79,6 +79,14 @@ export const CreateFlashcardModal = ({ isOpen, onClose }) => {
         <form 
           onSubmit={handleSubmit(onSubmit as any)}
           style={{color: colors.text[colorMode]}}
+          onKeyDown={(e: React.KeyboardEvent) => {
+            if(e.key === 'Enter' && e.metaKey 
+            || e.key ==='Enter' && e.shiftKey) {
+              handleSubmit(onSubmit as any);
+              console.log('Submitted.');
+              onClose();
+            }
+          }}
         >
           <ModalBody>
             {formError}
